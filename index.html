@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" type="text/css" href="src/style.css" />
+    <title>Online Hangman</title>
+  </head>
+
+  <body>
+    <div>
+      <h1 style="margin: 30px;">Hangman</h1>
+    </div>
+
+    <div id="rules">
+      <div class="rule">
+        You will be presented with a number of blank spaces representing the
+        missing letters you need to find.
+      </div>
+      <div class="rule">
+        Use the keyboard to guess a letter (I recommend starting with vowels).
+      </div>
+      <div class="rule">
+        If your chosen letter exists in the answer, then all places in the
+        answer where that letter appear will be revealed.
+      </div>
+      <div class="rule">
+        After you've revealed several letters, you may be able to guess what the
+        answer is and fill in the remaining letters.
+      </div>
+      <div class="rule">
+        Be warned, every time you guess a letter wrong you loose a life and the
+        hangman begins to appear, piece by piece.
+      </div>
+      <div class="rule">Solve the puzzle before the hangman dies</div>
+    </div>
+
+    <div id="play-mode-buttons">
+      <button onclick="singlePlayer()">Single Player</button>
+      <button onclick="multiPlayer()">Multi-Player</button>
+    </div>
+
+    <div id="categories">
+      <button id="movie">Movies</button>
+      <button id="tvShow">TV Shows</button>
+      <button id="famous-person">Famous Personalities</button>
+      <button id="famous-sportsman">Famous SportsPerson</button>
+      <button id="dictionary-word">Dictionary Words</button>
+      <button id="challenge">Challenge</button>
+    </div>
+    
+    <div id ="guess-word"></div>
+
+    <div id="result">
+      
+    </div>
+    <div id= "single-player-ui"></div>
+    <div id="word-category"></div>
+    <div id ="lives"></div>
+    <div id ="hangman-ui">
+        <div id="canvas">
+            <!-- <canvas width="300" height="400" id="hangman-canvas"></canvas> -->
+        </div>
+        <div id ="alphabets"></div>
+    </div>
+      
+    <div id= "multi-player-ui">
+      <div id="multi-util">
+          <div id="rules">
+              <div class="rule">
+                  The phrase guesser should look away from the screen while creator is writing.
+              </div>
+  
+              <div class="rule">
+                You can create guess phrase of upto 100 characters including special characters.                
+              </div>
+          </div>
+
+          <div class = "text-inputs">
+              <input 
+                  id="guess-input" 
+                  name="guess-phrase" 
+                  placeholder="Phrase"
+                  autofocus
+                  onkeyup="isValidInput()"
+                  ></input>
+              <input 
+                id="category-hint" 
+                name="hint" 
+                placeholder="hint/category"
+              ></input>
+            <div id ="input-error"></div>
+          </div>
+          
+        
+        <button id="guess-text-submit-button" >Submit</button>
+      </div>
+        
+    </div>
+
+    <div>
+      <button id = "reset-game" onclick="restartGame()">Play Again</button>
+    </div>
+
+
+    </div>
+
+    <script defer type="text/javascript" src="src/script.js"></script>
+    <script defer type="text/javascript" src="src/component/hangmanUtils.js"></script>
+    <script defer type="text/javascript" src="src/data/movies.js"></script>
+    <script defer type="text/javascript" src="src/data/famousCharacters.js"></script>
+    <script defer type="text/javascript" src="src/data/famousPeoples.js"></script>
+    <script defer type="text/javascript" src="src/data/famousSportsPerson.js"></script>
+    <script defer type="text/javascript" src="src/data/tvShows.js"></script>
+    <script defer type="text/javascript" src="src/data/vocabularyWords.js"></script>
+    <script defer type="text/javascript" src="src/data/data.js"></script>
+    <script defer type="text/javascript" src="src/component/renderAlphabets.js"></script>
+    <script defer type="text/javascript" src="src/component/singlePlayer.js"></script>
+    <script defer type="text/javascript" src="src/component/multiPlayer.js"></script>
+  </body>
+</html>
