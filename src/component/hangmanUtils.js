@@ -1,3 +1,8 @@
+
+/**
+ * Function to render action when you lost the game
+ */
+
 function gameOver() {
   let audioGameLost = new Audio("src/audio/lost.mp3");
   audioGameLost.play();
@@ -14,6 +19,11 @@ function gameOver() {
   let ctx = myCanvas.getContext("2d");
   drawFace(ctx, 148, 152);
 }
+
+/**
+ * Function to render action when you won the game
+ */
+
 
 function renderWinnerMessage() {
   let audioGameWin = new Audio("src/audio/won.mp3");
@@ -34,6 +44,11 @@ function renderWinnerMessage() {
   drawHeart(150, 120);
 }
 
+
+/**
+ * Function to render alphabet buttons used for guessing input.
+ */
+
 function renderAlphabets(handleAlphabetClick) {
   let alphabets = Array.apply(null, { length: 26 }).map((_, i) =>
     String.fromCharCode(i + 97)
@@ -49,6 +64,11 @@ function renderAlphabets(handleAlphabetClick) {
   }
 }
 
+/**
+ * Function to prevent empty phrase to be submitted in multi-player mode.
+ * 
+ */
+
 function isValidInput() {
   if (document.getElementById("guess-input").value === "") {
     document.getElementById("guess-text-submit-button").disabled = true;
@@ -59,6 +79,11 @@ function isValidInput() {
     document.getElementById("input-error").innerHTML = "";
   }
 }
+
+/**
+ * Function to restart game.
+ * 
+ */
 function restartGame() {
   document.getElementById("reset-game").style.visibility = "hidden";
   document.getElementById("rules").style.display = "flex";
@@ -80,6 +105,12 @@ function restartGame() {
   guessedLength = 0;
   wordCategory = "";
 }
+
+
+/**
+ * Function to draw initial hangman board on the canvas.
+ * 
+ */
 
 function renderInitialHangman() {
   let myCanvas = document.getElementById("hangman-canvas");
@@ -111,6 +142,12 @@ function renderInitialHangman() {
   ctx.stroke();
 }
 
+
+/**
+ * Function to update hangman canvas when you wrong guess a lettter.
+ * 
+ */
+
 function updateHangman(live) {
   let myCanvas = document.getElementById("hangman-canvas");
   let ctx = myCanvas.getContext("2d");
@@ -137,6 +174,32 @@ function updateHangman(live) {
     drawMan(150, 111.5);
   }
 }
+
+/**
+ * Function to draw rectangle with rounded corners on  canvas.
+ * 
+ */
+
+
+function roundedRect(ctx, x, y, width, height, radius) {
+  ctx.beginPath();
+  ctx.moveTo(x, y + radius);
+  ctx.lineTo(x, y + height - radius);
+  ctx.arcTo(x, y + height, x + radius, y + height, radius);
+  ctx.lineTo(x + width - radius, y + height);
+  ctx.arcTo(x + width, y + height, x + width, y + height - radius, radius);
+  ctx.lineTo(x + width, y + radius);
+  ctx.arcTo(x + width, y, x + width - radius, y, radius);
+  ctx.lineTo(x + radius, y);
+  ctx.arcTo(x, y, x, y + radius, radius);
+  ctx.stroke();
+}
+
+
+/**
+ * Function to draw a dummy man on the canvas.
+ * 
+ */
 
 function drawMan(x, y) {
   //height 50+75+30
@@ -189,19 +252,11 @@ function drawMan(x, y) {
   ctx.stroke();
 }
 
-function roundedRect(ctx, x, y, width, height, radius) {
-  ctx.beginPath();
-  ctx.moveTo(x, y + radius);
-  ctx.lineTo(x, y + height - radius);
-  ctx.arcTo(x, y + height, x + radius, y + height, radius);
-  ctx.lineTo(x + width - radius, y + height);
-  ctx.arcTo(x + width, y + height, x + width, y + height - radius, radius);
-  ctx.lineTo(x + width, y + radius);
-  ctx.arcTo(x + width, y, x + width - radius, y, radius);
-  ctx.lineTo(x + radius, y);
-  ctx.arcTo(x, y, x, y + radius, radius);
-  ctx.stroke();
-}
+
+/**
+ * Function to draw a Heart shape on the canvas.
+ * 
+ */
 
 function drawHeart(x, y) {
   let myCanvas = document.getElementById("hangman-canvas");
@@ -217,6 +272,13 @@ function drawHeart(x, y) {
   ctx.bezierCurveTo(x + 10, y - 15, x, y - 3, x, y);
   ctx.fill();
 }
+
+
+/**
+ * Function to draw a sad face  on the canvas.
+ * 
+ */
+
 function drawFace(ctx, x, y) {
   ctx.beginPath();
   ctx.lineWidth = 5;

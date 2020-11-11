@@ -4,6 +4,11 @@ let multiGuessedWord = "";
 let multiGuessedLength = 0;
 let multiWordCategory = "";
 
+/**
+ * function called when you choose multi-player mode.
+ *
+ */
+
 function multiPlayer() {
   document.getElementById("rules").style.display = "none";
   document.getElementById("lives").innerHTML = "";
@@ -15,6 +20,11 @@ function multiPlayer() {
     .addEventListener("click", handleGuessWordSubmitButton);
   document.getElementById("guess-text-submit-button");
 }
+
+/**
+ * function called when phrase creator submit his phrase to game.
+ *
+ */
 
 function handleGuessWordSubmitButton() {
   if (document.getElementById("guess-input").value === "") {
@@ -70,6 +80,11 @@ function handleGuessWordSubmitButton() {
   renderInitialHangman();
 }
 
+/**
+ * function to render blank spaces on place of word to guess.
+ *
+ */
+
 function renderMultiWord() {
   let guessWord = document.getElementById("guess-word");
   guessWord.innerHTML = "";
@@ -88,6 +103,11 @@ function renderMultiWord() {
     return c.match(/[a-z]/i);
   }
 }
+
+/**
+ * function to handle an alphabet button click for guessing.
+ *
+ */
 
 function handleMutliAlphabetClick(event) {
   let letter = event.target.innerText;
@@ -112,22 +132,20 @@ function handleMutliAlphabetClick(event) {
   }
 
   if (!found) {
-    
     multiLives--;
     updateHangman(multiLives);
     document.getElementById("live-data").innerHTML = `${multiLives}`;
     if (multiLives === 0) {
       gameOver();
-    }else{
-      let audioWrongGuess = new Audio('src/audio/wrong-option.mp3');
+    } else {
+      let audioWrongGuess = new Audio("src/audio/wrong-option.mp3");
       audioWrongGuess.play();
     }
   } else {
-    
     if (multiGuessedLength === multiGuessedWord.length) {
       renderWinnerMessage();
-    }else{
-      let audioRightGuess = new Audio('src/audio/right-option.mp3');
+    } else {
+      let audioRightGuess = new Audio("src/audio/right-option.mp3");
       audioRightGuess.play();
     }
   }

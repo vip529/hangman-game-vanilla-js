@@ -4,6 +4,12 @@ let guessedWord = "";
 let guessedLength = 0;
 let wordCategory = "";
 
+
+/**
+ * function called when you choose single player mode.
+ * 
+ */
+
 function singlePlayer() {
   
   document.getElementById("rules").style.display = "none";
@@ -12,11 +18,22 @@ function singlePlayer() {
   addCategories();
 }
 
+/**
+ * function to add click handler to guess categories available.
+ * 
+ */
+
 function addCategories() {
   document
     .getElementById("categories")
     .addEventListener("click", handleCategoryClick);
 }
+
+
+/**
+ * function called when you choose a guess category.
+ * 
+ */
 
 function handleCategoryClick(event) {
   document.getElementById("categories").style.display = "none";
@@ -128,6 +145,12 @@ function handleCategoryClick(event) {
   renderInitialHangman();
 }
 
+
+/**
+ * function to render blank spaces on place of word to guess.
+ * 
+ */
+
 function renderWord() {
   let guessWord = document.getElementById("guess-word");
   for (let i = 0; i < choosenWord.length; i++) {
@@ -145,6 +168,12 @@ function renderWord() {
     return c.match(/[a-z]/i);
   }
 }
+
+
+/**
+ * function to handle an alphabet button click for guessing.
+ * 
+ */
 
 function handleAlphabetClick(event) {
   let letter = event.target.innerText;
