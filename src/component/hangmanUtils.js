@@ -6,6 +6,7 @@
 function gameOver() {
   let audioGameLost = new Audio("src/audio/lost.mp3");
   audioGameLost.play();
+  
   document.getElementById("word-category").innerHTML = "";
   document.getElementById("guess-word").innerHTML = "";
   document.getElementById("lives").innerHTML = "";

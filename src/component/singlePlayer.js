@@ -2,7 +2,6 @@ let choosenWord = "";
 let lives = 0;
 let guessedWord = "";
 let guessedLength = 0;
-let wordCategory = "";
 
 
 /**
